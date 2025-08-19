@@ -11,8 +11,8 @@ const navItems = [
   { key: "nav.experience", href: "#experience" },
   { key: "nav.skills", href: "#skills" },
   { key: "nav.projects", href: "#projects" },
-  { key: "nav.blogs", href: "#blogs" },
-  { key: "nav.content", href: "#content" },
+  // { key: "nav.blogs", href: "#blogs" },
+  // { key: "nav.content", href: "#content" },
   { key: "nav.contact", href: "#contact" },
 ]
 
@@ -61,7 +61,6 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* Language Toggle */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

@@ -2,47 +2,60 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Una plataforma completa de comercio electrónico construida con Next.js, TypeScript y Stripe para pagos.",
-    technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "PostgreSQL"],
-    image: "/project1.jpg",
-    github: "https://github.com/username/ecommerce",
-    live: "https://ecommerce-demo.com",
+    titleKey: 'projects.musicNews.title',
+    descriptionKey: 'projects.musicNews.description',
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Brave Search API", "OpenAI Model", "Vercel"],
+    image: "/images/music-news.png",
+    github: "https://github.com/meltingghost/music-news",
+    live: "https://music.bocono-labs.com/en",
     featured: true
   },
   {
-    title: "Task Management App",
-    description: "Aplicación de gestión de tareas con funcionalidades de drag & drop, filtros y colaboración en tiempo real.",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-    image: "/project2.jpg",
-    github: "https://github.com/username/task-app",
-    live: "https://task-app-demo.com",
+    titleKey: 'projects.atilioMotors.title',
+    descriptionKey: 'projects.atilioMotors.description',
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Neon", "Vercel"],
+    image: "/images/atilio-motors.png",
+    github: "https://github.com/meltingghost/atilio-motors",
+    live: "https://atilio-motors.vercel.app/",
     featured: true
   },
   {
-    title: "Weather Dashboard",
-    description: "Dashboard del clima con visualizaciones interactivas y datos en tiempo real de múltiples APIs.",
-    technologies: ["React", "D3.js", "OpenWeather API", "Chart.js"],
-    image: "/project3.jpg",
-    github: "https://github.com/username/weather-dashboard",
-    live: "https://weather-demo.com",
+    titleKey: 'projects.gestorAdminJJ.title',
+    descriptionKey: 'projects.gestorAdminJJ.description',
+    technologies: ["JavaScript", "HTML", "CSS", "PHP", "MySQL", "Bootstrap", "JQuery", "Vercel"],
+    image: "https://via.placeholder.com/400x300/1e293b/64748b?text=Gestor+Admin+JJ",
+    github: "https://github.com/meltingghost/gestor_admin_jj",
+    live: "https://gestor-admin-jj.vercel.app/",
     featured: false
   },
   {
-    title: "Blog Platform",
-    description: "Plataforma de blog con sistema de autenticación, editor de texto rico y comentarios.",
-    technologies: ["Next.js", "Prisma", "NextAuth", "Markdown", "Vercel"],
-    image: "/project4.jpg",
-    github: "https://github.com/username/blog-platform",
+    titleKey: 'projects.gestorTramitesLeon.title',
+    descriptionKey: 'projects.gestorTramitesLeon.description',
+    technologies: ["JavaScript", "HTML", "CSS", "PHP", "MySQL", "Bootstrap", "JQuery", "Vercel"],
+    image: "https://via.placeholder.com/400x300/1e293b/64748b?text=Gestor+Tramites+Leon",
+    github: "https://github.com/meltingghost/gestor_tramites_leon",
     live: "https://blog-demo.com",
+    featured: false
+  },
+  {
+    titleKey: 'projects.pokedex.title',
+    descriptionKey: 'projects.pokedex.description',
+    technologies: ["TypeScript", "Tailwind", "Vercel"],
+    image: "https://via.placeholder.com/400x300/1e293b/64748b?text=Pokédex",
+    github: "https://github.com/meltingghost/pokedex_typescript_tailwind",
+    live: "https://pokedex-meltingghost.vercel.app/",
     featured: false
   }
 ]
 
 export default function ProjectsSection() {
+  const { t } = useLanguage()
+  
   return (
     <section id="projects" className="py-20 bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,30 +66,39 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Proyectos Destacados</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">{t('projects.title')}</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Aquí puedes ver algunos de los proyectos en los que he trabajado, desde aplicaciones web completas hasta herramientas específicas.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {projects.filter(project => project.featured).map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.titleKey}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
               className="bg-slate-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center">
-                <div className="text-white text-6xl font-bold opacity-20">
-                  {project.title.charAt(0)}
-                </div>
+              <div className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center relative overflow-hidden">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={t(project.titleKey)}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="text-white text-6xl font-bold opacity-20">
+                    {t(project.titleKey).charAt(0)}
+                  </div>
+                )}
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-semibold text-white mb-3">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
+                <h3 className="text-2xl font-semibold text-white mb-3">{t(project.titleKey)}</h3>
+                <p className="text-gray-300 mb-4">{t(project.descriptionKey)}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech) => (
                     <span
@@ -92,13 +114,13 @@ export default function ProjectsSection() {
                     href={project.github}
                     className="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg text-center transition-colors duration-300"
                   >
-                    Ver Código
+                    {t('projects.viewCode')}
                   </Link>
                   <Link
                     href={project.live}
                     className="flex-1 bg-teal-400 hover:bg-teal-500 text-white py-2 px-4 rounded-lg text-center transition-colors duration-300"
                   >
-                    Ver Demo
+                    {t('projects.viewDemo')}
                   </Link>
                 </div>
               </div>
@@ -113,19 +135,19 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h3 className="text-2xl font-semibold text-white mb-8">Otros Proyectos</h3>
+          <h3 className="text-2xl font-semibold text-white mb-8">{t('projects.otherProjects')}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.filter(project => !project.featured).map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.titleKey}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="bg-slate-800 rounded-lg p-6 hover:bg-slate-700 transition-colors duration-300"
               >
-                <h4 className="text-xl font-semibold text-white mb-3">{project.title}</h4>
-                <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
+                <h4 className="text-xl font-semibold text-white mb-3">{t(project.titleKey)}</h4>
+                <p className="text-gray-300 mb-4 text-sm">{t(project.descriptionKey)}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span
@@ -141,13 +163,13 @@ export default function ProjectsSection() {
                     href={project.github}
                     className="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 px-3 rounded text-sm text-center transition-colors duration-300"
                   >
-                    Código
+                    {t('projects.code')}
                   </Link>
                   <Link
                     href={project.live}
                     className="flex-1 bg-teal-400 hover:bg-teal-500 text-white py-2 px-3 rounded text-sm text-center transition-colors duration-300"
                   >
-                    Demo
+                    {t('projects.demo')}
                   </Link>
                 </div>
               </motion.div>

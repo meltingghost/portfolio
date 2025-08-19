@@ -6,8 +6,8 @@ import HeroSection from "../components/hero-section"
 import SkillsSection from "../components/skills-section"
 import ExperienceSection from "../components/experience-section"
 import ProjectsSection from "../components/projects-section"
-import BlogsSection from "../components/blogs-section"
-import InstagramSection from "../components/instagram-section"
+// import BlogsSection from "../components/blogs-section"
+// import InstagramSection from "../components/instagram-section"
 import ContactSection from "../components/contact-section"
 
 export default function Home() {
@@ -27,8 +27,8 @@ export default function Home() {
         <ExperienceSection />
         <SkillsSection />
         <ProjectsSection />
-        <BlogsSection />
-        <InstagramSection />
+        {/* <BlogsSection /> */}
+        {/* <InstagramSection /> */}
         <ContactSection />
       </main>
     </div>
