@@ -5,13 +5,13 @@ import { Inter } from "next/font/google"
 import { LanguageProvider } from "@/contexts/LanguageContext"
 
 export const metadata: Metadata = {
-  title: "Emilio Cabezas - Frontend Developer Portfolio",
-  description: "Portfolio personal de un desarrollador frontend especializado en React, Next.js y Tailwind CSS",
-  keywords: "frontend developer, react, nextjs, tailwind, portfolio, web development",
+  title: "Emilio Cabezas - Full Stack Developer Portfolio",
+  description: "Portfolio personal de un desarrollador full stack especializado en React, Next.js, Tailwind CSS, Node.js, MongoDB, Express, y más",
+  keywords: "full stack developer, react, nextjs, tailwind, portfolio, web development",
   authors: [{ name: "Emilio Cabezas" }],
   openGraph: {
-    title: "Emilio Cabezas - Frontend Developer Portfolio",
-    description: "Portfolio personal de un desarrollador frontend especializado en React, Next.js y Tailwind CSS",
+    title: "Emilio Cabezas - Full Stack Developer Portfolio",
+    description: "Portfolio personal de un desarrollador full stack especializado en React, Next.js, Tailwind CSS, Node.js, MongoDB, Express, y más",
     type: "website",
   },
 }
